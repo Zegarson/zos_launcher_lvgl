@@ -1,24 +1,17 @@
 {
-	// https://code.visualstudio.com/docs/editor/workspaces
-	// https://code.visualstudio.com/docs/editor/multi-root-workspaces
-	// https://code.visualstudio.com/docs/editor/variables-reference
-
 	"folders": [
 		{
 			"path": "."
 		},
 	],
-	// extensions.json section
 	"extensions": {
 		"recommendations": [
-			"ms-vscode.cpptools",              // common C/C++ support
-			"ms-vscode.cpptools-themes",       // general C/C++ theme
-			"ms-vscode.cmake-tools"            // cmake support
+			"ms-vscode.cpptools",
+			"ms-vscode.cpptools-themes",
+			"ms-vscode.cmake-tools"
 		],
-		"unwantedRecommendations": [
-		]
+		"unwantedRecommendations": []
 	},
-	// settings.json section
 	"settings": {
 		"files.trimTrailingWhitespace": true,
 		"files.insertFinalNewline": true,
@@ -26,10 +19,10 @@
 		"cmake.configureOnOpen": true,
 		"files.associations": {
 			"glob.h": "c",
-			"lvgl.h": "c"
+			"lvgl.h": "c",
+			"stdio.h": "c"
 		},
 	},
-	// tasks.json section
 	"tasks": {
 		"version": "2.0.0",
 		"tasks": [
@@ -37,7 +30,8 @@
 				"label": "Build",
 				"command": "cmake",
 				"args": [
-					"--build", "${command:cmake.buildDirectory}"
+					"--build",
+					"${command:cmake.buildDirectory}"
 				],
 				"group": {
 					"kind": "build",
@@ -45,7 +39,10 @@
 				},
 				"problemMatcher": {
 					"owner": "cpp",
-					"fileLocation": ["relative", "${workspaceFolder}"],
+					"fileLocation": [
+						"relative",
+						"${workspaceFolder}"
+					],
 					"pattern": {
 						"regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
 						"file": 1,
@@ -68,7 +65,6 @@
 			}
 		],
 	},
-	// launch.json section
 	"launch": {
 		"version": "0.2.0",
 		"configurations": [
@@ -76,28 +72,28 @@
 				"name": "Debug LVGL demo with gdb",
 				"type": "cppdbg",
 				"request": "launch",
-		        "program": "${workspaceFolder}/bin/main",
+				"program": "${workspaceFolder}/bin/main",
 				"args": [],
 				"cwd": "${workspaceFolder}",
 				"preLaunchTask": "Build",
 				"stopAtEntry": false,
 				"linux": {
 					"MIMode": "gdb",
-					"miDebuggerPath": "/usr/bin/gdb"
-				  },
-				  "osx": {
+					"miDebuggerPath": "gdb"
+				},
+				"osx": {
 					"MIMode": "lldb"
-				  },
-				  "windows": {
+				},
+				"windows": {
 					"MIMode": "gdb",
 					"miDebuggerPath": "C:\\MinGw\\bin\\gdb.exe"
-				  }
+				}
 			},
 			{
 				"name": "Debug LVGL demo with LLVM",
 				"type": "cppdbg",
 				"request": "launch",
-		        "program": "${workspaceFolder}/bin/main",
+				"program": "${workspaceFolder}/bin/main",
 				"args": [],
 				"cwd": "${workspaceFolder}",
 				"preLaunchTask": "Build",
