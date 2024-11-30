@@ -29,6 +29,7 @@
               vcpkg
               vcpkg-tool
               SDL2
+              SDL2.dev
             ] ++ (if system == "aarch64-darwin" then [ ] else [ gdb ]);
           };
       });
